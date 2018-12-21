@@ -1,0 +1,119 @@
+@font-face{
+    font-family:'Julius';
+    src: url('fonts/FrederickatheGreat-Regular.ttf');
+}
+h1, h3
+{
+    text-align:center;
+}
+.stock{
+    color:red;
+}	
+
+.carousel {           
+      
+    overflow: hidden;
+}
+.carousel-caption{
+     font-size: 40px;
+}
+	
+.carousel img {
+    width: 100%;
+}
+h3
+{
+    background-color:black;
+    color:white;
+    font-size:0.9em;
+    margin-bottom:0px;
+}
+.news p
+{
+    background-color:#CCCCCC;
+    margin-top:0px;
+}
+.news
+{
+    width:70%;
+    margin:auto;
+}
+a
+{
+    text-decoration: none;
+    color: blue;
+}
+
+body 
+{
+ 
+}
+.titre{
+    text-align: center;
+    color:#fff;
+    
+}
+.titre h1{
+    font-size:100px;
+    font-family:'Julius';
+}
+#imgHome{
+    margin-top: -10px;
+    height:35px;
+    width:35px;
+}
+.alertAjout{
+    display:none;
+}
+.indisp{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+.imageproduit
+{
+  width: 200px;
+  height: 165px;
+}
+
+
+.banniere{
+    background-color: #88b14b;
+    opacity: 0.8;
+    height: 150px;
+}
+.imagelogo
+{
+    width:100%;
+    height:165px;
+}
+.submit
+{
+    text-align: right;
+}
+.container{
+    margin-top:20px;
+}
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
