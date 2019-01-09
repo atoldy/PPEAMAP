@@ -465,8 +465,12 @@ function supprimePanier()
 function nouvLivraison($unIdUtil)
 {
 	global $bdd;
-	$req = $bdd->exec("INSERT INTO livraison (id_utilisateur) VALUES (".$unIdUtil.")");
+        $date=$bdd->query("Select NOW()");
+        while ($donnees = $date->fetch()){
+        $dateNow=$donnees["NOW()"];
         
+	$req = $bdd->exec("INSERT INTO livraison (id_utilisateur,date) VALUES (".$unIdUtil.",'$dateNow')");
+        }
         $req = $bdd->prepare('SELECT max(id) FROM livraison');
         $req->execute();
         $idLivraison = $req->fetchAll();
