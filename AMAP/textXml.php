@@ -5,7 +5,7 @@ global $bdd;
 
 $xml='<livraisons>';
 
-$req = $bdd->prepare('SELECT * FROM livraison ');
+$req = $bdd->prepare('SELECT * FROM livraison Where date= CONVERT(NOW(),date)');
 $req->execute();
 $livraisons = $req->fetchAll();
 
@@ -14,7 +14,8 @@ foreach($livraisons as $livraison)
 {
 	//recupere son client
 	$req = $bdd->prepare('SELECT * FROM utilisateur WHERE id='.$livraison['id_utilisateur']);
-	$req->execute();
+
+        $req->execute();
 	
 	$util = $req->fetch();
 	
@@ -35,7 +36,5 @@ foreach($livraisons as $livraison)
 
 $xml = $xml.'</livraisons>';
 
-var_dump($xml);
-
 file_put_contents('xml/livraisons.xml', $xml);
-
+header('Location:xml/livraisons.xml');
