@@ -10,6 +10,15 @@ function get_categ() //Donne les categorie de produit a afficher dans le nav
     return $categories;
 }
 
+function get_commande($unUtil)//donne toute les commandes pour un utilisateur 
+{
+    global $bdd;
+    $req = $bdd->prepare('SELECT id, date FROM livraison where id_utilisateur='.$unUtil);
+    $req->execute();
+    $commande = $req->fetchAll();
+    return $commande;
+}
+
 function get_produit($uneCateg) //donne tous les produit ou seulement ceux d'une categ
 {
     global $bdd;

@@ -49,12 +49,12 @@ switch($uc)
 		{include("controleurs/c_GererUtilisateur.php");break;}
 	case 'ajout' :
 		{include("controleurs/c_gestionProduits.php");break;}
-                     case 'gestionPanierProducteur' :
- 
+                     
+        case 'gestionPanierProducteur' :
             {include("controleurs/c_GestionPanierProducteur.php");break;}
  
-            
- 
+        case 'voirCommandes' :    
+            {include("controleurs/c_VoirCommandes.php");break;}
         case 'modificationDeProduit' :
  
         {include("controleurs/c_modificationDeProduit.php");break;}

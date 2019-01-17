@@ -35,10 +35,11 @@
 						</div>
 						<ul class='nav navbar-nav'>
 						  <li><a href='index.php?uc=voirProduitsAdmin'>Catégories</a></li>
-                                                   <li><a href='index.php?uc=exportXml'>Exporter le xml</a></li>
+                                                  <li><a href='index.php?uc=exportXml'>Exporter le xml</a></li>
 						  <li><a href='index.php?uc=voirUtilisateur'>Comptes utilisateur</a></li>
 						  <li><a href='index.php?uc=infoCompte&action=voir'>informations compte</a></li>
-						  <li><a href='index.php?uc=deco'>Déconnectez-vous</a></li>
+						  <li><a href='index.php?uc=voirCommandes'>Voir les commandes</a></li>
+                                                  <li><a href='index.php?uc=deco'>Déconnectez-vous</a></li>
 						</ul>
 					  </div>
 					</nav>";
@@ -74,6 +75,7 @@
 						  <a class='navbar-brand' href='index.php'>AMAP</a>
 						</div>
 						<ul class='nav navbar-nav'>
+                                                  <li><a href='index.php?uc=voirCommandes'>Mes Commandes</a></li>
 						  <li><a href='index.php?uc=voirProduits'>Produits</a></li>
 						  <li><a href='index.php?uc=infoCompte&action=voir'>informations compte</a></li>
 						  <li><a href='index.php?uc=gestionPanier&action=voir'>Panier</a></li>
