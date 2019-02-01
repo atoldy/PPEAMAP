@@ -314,3 +314,12 @@ tbody tr:hover {
 .btnC{
     width:54px;
 }
+
+.verde{
+    background-color: #a1c270;
+    height: 100%;
+}
+
+#selectuser{
+    text-align: center;
+}

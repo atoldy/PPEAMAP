@@ -39,7 +39,6 @@ function getProduit()
   function actualiserPage()
  {	
        creerRequete();
-       echo("tr");
 		
 	
 }

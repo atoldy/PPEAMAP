@@ -1,6 +1,7 @@
+<div class="verde"> 
 <?php
 session_start();
-  
+   
 include_once('util/connexion_sql.php');
 include_once('util/fonctions.php');
 $categories = get_categ();
@@ -73,3 +74,4 @@ switch($uc)
 
 include("vues/v_pied.php") ;
 ?>
+</div>

@@ -1,6 +1,5 @@
 <?php
 include_once("connexion_sql.php");
-
 function get_categ() //Donne les categorie de produit a afficher dans le nav
 {
     global $bdd;
@@ -9,7 +8,6 @@ function get_categ() //Donne les categorie de produit a afficher dans le nav
     $categories = $req->fetchAll();
     return $categories;
 }
-
 function get_commande($unUtil)//donne toute les commandes pour un utilisateur 
 {
     global $bdd;
@@ -18,24 +16,19 @@ function get_commande($unUtil)//donne toute les commandes pour un utilisateur
     $commande = $req->fetchAll();
     return $commande;
 }
-
 function get_produit($uneCateg) //donne tous les produit ou seulement ceux d'une categ
 {
     global $bdd;
 	$uneCateg = (int) $uneCateg;
-
 	if($uneCateg==0)
 	{$req = 'SELECT * FROM produit ORDER BY libelle';}
-
 	else
 	{$req = "SELECT * FROM produit WHERE produit.id_categorie = '".$uneCateg."' ORDER BY libelle";}
 	$req = $bdd->prepare($req);
     $req->execute();
     $produits = $req->fetchAll();
-
     return $produits;
 }
-
 function get_utilisateur() //donne tous les produit ou seulement ceux d'une categ
 {
     global $bdd;
@@ -43,46 +36,36 @@ function get_utilisateur() //donne tous les produit ou seulement ceux d'une cate
 	$req = $bdd->prepare($req);
     $req->execute();
     $utilisateurs = $req->fetchAll();
-
     return $utilisateurs;
 }
-
 function get_unProduit($unIdProduit) //donne tous les produit ou seulement ceux d'une categ
 {
     global $bdd;
 	$unIdProduit = (int) $unIdProduit;
-
 	{$req = "SELECT * FROM produit WHERE produit.id = '".$unIdProduit."' ";}
 	$req = $bdd->prepare($req);
     $req->execute();
     $produits = $req->fetchAll();
-
     return $produits;
 }
-
 function get_type_utilisateur(){
     global $bdd;
 	$req = 'SELECT id,libelle FROM type_utilisateur';
 	$req = $bdd->prepare($req);
     $req->execute();
     $tutilisateur = $req->fetchAll();
-
     return $tutilisateur;
 }
-
 function get_unUtilisateur($unIdUtilisateur) //donne tous les produit ou seulement ceux d'une categ
 {
     global $bdd;
 	$unIdUtilisateur = (int) $unIdUtilisateur;
-
 	{$req = "SELECT * FROM Utilisateur WHERE id = '".$unIdUtilisateur."' ";}
 	$req = $bdd->prepare($req);
     $req->execute();
     $Utilisateur = $req->fetchAll();
-
     return $Utilisateur;
 }
-
 function verifQteProduit($libelle, $qte)
 {
 	global $bdd;
@@ -98,22 +81,17 @@ function verifQteProduit($libelle, $qte)
 	{
 		return true;
 	}
-
 }
-
 function get_produitProducteur($unId) //donne tous les produit ou seulement ceux d'une categ
 {
     global $bdd;
   	$unId = (int) $unId;
-
   	$req = "SELECT * FROM produit WHERE produit.id_utilisateur = '".$unId."' ORDER BY libelle";
   	$req = $bdd->prepare($req);
     $req->execute();
     $produits = $req->fetchAll();
-
     return $produits;
 }
-
 function set_param_utilisateur($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $ville, $login,$type)
 {
   	global $bdd;
@@ -128,7 +106,6 @@ function set_param_utilisateur($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $
 						login= :login,
                                                 id_Type_utilisateur= :type
 						WHERE id= :id');
-
     $req->execute(array(
     	'nom' => $nom,
     	'prenom' => $prenom,
@@ -143,8 +120,6 @@ function set_param_utilisateur($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $
     ));
 	return true;
 }
-
-
 function set_param_compte($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $ville, $login, $newMdp)
 {
   	global $bdd;
@@ -159,7 +134,6 @@ function set_param_compte($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $ville
 						mdp= :mdp,
 						login= :login
 						WHERE id= :id');
-
     $req->execute(array(
     	'nom' => $nom,
     	'prenom' => $prenom,
@@ -172,7 +146,6 @@ function set_param_compte($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $ville
     	'login' => $login,
     	'id' => $id
     ));
-
 	$_SESSION['id'] = $id;
 	$_SESSION['nom'] = $nom;
 	$_SESSION['prenom'] = $prenom;
@@ -183,10 +156,8 @@ function set_param_compte($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $ville
 	$_SESSION['ville'] = $ville;
 	$_SESSION['mdp'] = $newMdp;
 	$_SESSION['login'] = $login;
-
 	return true;
 }
-
 function set_param_compte_nomdp($id, $nom, $prenom, $adresse, $mail, $tel, $cp, $ville, $login)
 {
   	global $bdd;
@@ -200,7 +171,6 @@ function set_param_compte_nomdp($id, $nom, $prenom, $adresse, $mail, $tel, $cp, 
 						ville= :ville,
 						login= :login
 						WHERE id= :id');
-
     $req->execute(array(
     	'nom' => $nom,
     	'prenom' => $prenom,
@@ -212,7 +182,6 @@ function set_param_compte_nomdp($id, $nom, $prenom, $adresse, $mail, $tel, $cp, 
     	'login' => $login,
     	'id' => $id
     ));
-
 	$_SESSION['id'] = $id;
 	$_SESSION['nom'] = $nom;
 	$_SESSION['prenom'] = $prenom;
@@ -222,10 +191,8 @@ function set_param_compte_nomdp($id, $nom, $prenom, $adresse, $mail, $tel, $cp, 
 	$_SESSION['codepostal'] = $cp;
 	$_SESSION['ville'] = $ville;
 	$_SESSION['login'] = $login;
-
 	return true;
 }
-
 function set_connexion($unLogin, $unMdp)//fait la connexion en consommateur, producteur ou admib
 {
     global $bdd;
@@ -240,16 +207,12 @@ function set_connexion($unLogin, $unMdp)//fait la connexion en consommateur, pro
     // Do something, you know... log them in.
 } 
 	$req = $bdd->prepare('SELECT * FROM utilisateur WHERE login= :login AND mdp = :mdp');
-
 	$req->execute(array(
 	'login' => $unLogin,
 	'mdp' => $unMdp
 	));
-
     $utilisateur = $req->fetch(PDO::FETCH_ASSOC);
-
 	$MonMembreExiste = $req->rowCount();
-
 	if ($MonMembreExiste == 0)
 	{
 		//si pas de compte
@@ -272,43 +235,33 @@ function set_connexion($unLogin, $unMdp)//fait la connexion en consommateur, pro
 		return true;
 	}
 }
-
 function verifierCompteExistant($login, $mail)
 	{
 		global $bdd;
 		$req = $bdd->prepare("SELECT login, mail FROM utilisateur WHERE login=:login OR mail=:mail");
-
 		$req->execute(array(
 			'login' => $login,
 			'mail' => $mail
 			));
-
 		$existant=false;
-
 		if ( $req->fetch() )
 		{
 			$existant = true;
 		}
-
 		return $existant;
 	}
-
-
 function set_compte($login, $nom, $prenom, $adresse, $mail, $tel, $cp, $ville, $mdp, $type)//creer un compte
 {
     global $bdd;
     $req = ("INSERT INTO utilisateur(login,nom, prenom, adresse, mail, tel, codepostal, ville, mdp, id_Type_utilisateur)
 							   Values('$login', '$nom', '$prenom', '$adresse', '$mail', $tel, $cp, '$ville', '$mdp', 3)");
  
-
 							
     $req = $bdd->prepare($req);
     $req-> execute();
-
   
 }
 		
-
 //modifier un article
 function modifierArticleBD($idProduit, $description, $prix, $idCategorie)
 {
@@ -325,26 +278,19 @@ function modifierArticleBD($idProduit, $description, $prix, $idCategorie)
     	'description' => $description,
     	'id' => $idProduit
     ));
-
-
-
 	return true;
-
 }
-
 function creerArticleBD($description, $prix, $idCategorie)
 {
         global $bdd;
 	$req = $bdd->prepare("INSERT INTO produit(description, prix, idCategorie)
 	VALUES(:description, :prix, :idCategorie)");
-
 	$req->execute(array(
 		'description' => $description,
 		'prix' => $prix,
 		'idCategorie' => $idCategorie
 		));
 }
-
 function creationPanier()
 {
    if (!isset($_SESSION['panier']))
@@ -358,15 +304,12 @@ function creationPanier()
    }
    return true;
 }
-
 function ajouterArticle($idProduit,$libelleProduit,$descriptionProduit,$qteProduit,$prixProduit){
-
    //Si le panier existe
    if (creationPanier())
    {
       //Si le produit existe déjà on ajoute seulement la quantité
       $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
-
       if ($positionProduit !== false)
       {
          $_SESSION['panier']['qteProduit'][$positionProduit] += $qteProduit ;
@@ -384,7 +327,6 @@ function ajouterArticle($idProduit,$libelleProduit,$descriptionProduit,$qteProdu
    else
    echo "Un problème est survenu veuillez contacter l'administrateur du site.";
 }
-
 function supprimerArticle($libelleProduit){
    //Si le panier existe
    if (creationPanier())
@@ -396,7 +338,6 @@ function supprimerArticle($libelleProduit){
 	  $tmp['descriptionProduit'] = array();
       $tmp['qteProduit'] = array();
       $tmp['prixProduit'] = array();
-
       for($i = 0; $i < count($_SESSION['panier']['libelleProduit']); $i++)
       {
          if ($_SESSION['panier']['libelleProduit'][$i] !== $libelleProduit)
@@ -407,7 +348,6 @@ function supprimerArticle($libelleProduit){
             array_push( $tmp['qteProduit'],$_SESSION['panier']['qteProduit'][$i]);
             array_push( $tmp['prixProduit'],$_SESSION['panier']['prixProduit'][$i]);
          }
-
       }
       //On remplace le panier en session par notre panier temporaire à jour
       $_SESSION['panier'] =  $tmp;
@@ -417,7 +357,6 @@ function supprimerArticle($libelleProduit){
    else
    echo "Un problème est survenu veuillez contacter l'administrateur du site.";
 }
-
 function supprimerProduit($idProduit){
     global $bdd;
     $req = "DELETE FROM `produit` WHERE `produit`.`id` = '".$idProduit."'";
@@ -425,7 +364,6 @@ function supprimerProduit($idProduit){
 	$req -> execute();
     
 }
-
 function modifierQTeArticle($libelleProduit,$qteProduit){
    //Si le panier éxiste
    if (creationPanier())
@@ -435,7 +373,6 @@ function modifierQTeArticle($libelleProduit,$qteProduit){
       {
          //Recharche du produit dans le panier
          $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
-
          if ($positionProduit !== false)
          {
             $_SESSION['panier']['qteProduit'][$positionProduit] = $qteProduit ;
@@ -447,7 +384,6 @@ function modifierQTeArticle($libelleProduit,$qteProduit){
    else
    echo "Un problème est survenu veuillez contacter l'administrateur du site.";
 }
-
 function MontantGlobal()
 {
    $total=0;
@@ -457,7 +393,6 @@ function MontantGlobal()
    }
    return $total;
 }
-
 function compterArticles()
 {
    if (isset($_SESSION['panier']))
@@ -465,12 +400,10 @@ function compterArticles()
    else
    return 0;
 }
-
 function supprimePanier()
 {
    unset($_SESSION['panier']);
 }
-
 function nouvLivraison($unIdUtil)
 {
 	global $bdd;
@@ -487,7 +420,6 @@ function nouvLivraison($unIdUtil)
 	//var_dump($bdd->lastInsertId());
 	return $idLivraison;
 }
-
 function nouvColis($montantTotal, $idLivraison, $quantiteProd, $idProduit)
 {
 	global $bdd;
@@ -500,6 +432,5 @@ function nouvColis($montantTotal, $idLivraison, $quantiteProd, $idProduit)
 		'idProd' => $idProduit
 		)
 	);*/
-
 	return "INSERT INTO colis (montanttotal,id_livraison,quantite,id_produit) VALUES ('$montantTotal', '$idLivraison', '$quantiteProd', '$idProduit')";
 }

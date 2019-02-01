@@ -98,7 +98,7 @@
 						  
                                                    <li><a href='index.php?uc=exportXml'>Exporter le xml</a></li>
 						  <li><a href='index.php?uc=infoCompte&action=voir'>informations compte</a></li>
-						  
+						  <li><a href='index.php?uc=voirCommandes'>Voir les commandes</a></li>
 						  <li><a href='index.php?uc=deco'>Déconnectez-vous</a></li>
 						</ul>
 					  </div>

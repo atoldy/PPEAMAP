@@ -224,4 +224,20 @@ function verifSupProduit()
 { check = confirm('Êtes-vous sûr de vouloir supprimer ce produit ?') 
     if(check==false){return false} };
 
+function change_valeur() {
+var select = document.getElementById("user");
+var choice = select.selectedIndex  // Récupération de l'index du <option> choisi
+ 
+var valeur_cherchee = select.options[choice].value;
+return valeur_cherchee;
+}
+
+ var requete = null;
+
+
+function affichertableau(id){
+    if(id!=0){
+    window.location.href = "index.php?uc=voirCommandes&user="+id;
+} 
+}
 
